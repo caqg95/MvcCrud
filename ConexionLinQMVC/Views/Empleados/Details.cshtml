@@ -1,0 +1,67 @@
+﻿@model ConexionLinQMVC.Data.tblEmpleados
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblEmpleados</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaLibre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaLibre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblDepartamento.Departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDepartamento.Departamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblTurnos.Turno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblTurnos.Turno)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEmpleados }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,129 @@
+﻿@model ConexionLinQMVC.Data.tblTurnos
+@{
+    ViewBag.Title = "EDITAR TURNOS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Editar Turnos</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+            <li class="dropdown">@Html.ActionLink("Tipo Justificacion", "Index", "TipoJustificacions") </li>
+            <li class="active">Registrar Justificacion</li>
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdTurno)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdTurno, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.IdTurno, new { disabled = "disabled", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdTurno, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Turno, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Turno, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Turno, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Lunes_Sabado_Inicio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Lunes_Sabado_Inicio, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.Lunes_Sabado_Inicio, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Lunes_Sabado_Fin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Lunes_Sabado_Fin, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.Lunes_Sabado_Fin, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HorasAlmuerzo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HorasAlmuerzo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HorasAlmuerzo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Almuerzo_Inicio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Almuerzo_Inicio, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.Almuerzo_Inicio, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Almuerzo_Fin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Almuerzo_Fin, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.Almuerzo_Fin, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="btn-group dropdown" style="margin-bottom:5px">
+                    <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                    <button class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#ModalEliminar">Eliminar</a>
+                        </li>
+                    </ul>
+                </div>
+                or @Html.ActionLink("Cancelar", "Index")
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a la lista", "Index")
+</div>
+<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmación de Eliminado</h4>
+            </div>
+            <div class="modal-body">
+                <p>Quiere borrar el Turno '@Model.Turno'. </p>
+                <p>
+                    <strong> ¿Está Seguro de Continuar?</strong>
+                </p>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.IdTurno)
+                }
+            </div>
+            <div class="modal-footer">
+                @if (Model.IdTurno > 0)
+                {
+                    <a href="/Turnos/Delete/@Model.IdTurno" class="btn btn-danger">Si, Borrar el Turno.</a>
+                }
+                <button type="button" class="btn btn-primary" onclick="$('#ModalEliminar').modal('hide')">No, Borrar el turno.</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

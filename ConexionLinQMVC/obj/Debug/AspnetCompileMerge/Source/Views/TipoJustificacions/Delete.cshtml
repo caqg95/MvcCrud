@@ -1,0 +1,29 @@
+﻿@model ConexionLinQMVC.Data.tblTipoJustificacion
+
+@{
+    ViewBag.Title = "Eliminar Justificacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h4>Eliminar Justificacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Justificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Justificacion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a la lista", "Index")
+        </div>
+    }
+</div>

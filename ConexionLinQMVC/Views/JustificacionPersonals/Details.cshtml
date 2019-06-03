@@ -1,0 +1,51 @@
+﻿@model ConexionLinQMVC.Data.tblJustificacionPersonal
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblJustificacionPersonal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblDias.IdDias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDias.IdDias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblEmpleados.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblEmpleados.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblTipoJustificacion.Justificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblTipoJustificacion.Justificacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

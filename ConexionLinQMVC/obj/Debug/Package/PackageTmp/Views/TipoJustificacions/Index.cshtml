@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ConexionLinQMVC.Data.tblTipoJustificacion>
+
+@{
+    ViewBag.Title = "TIPO DE JUSTIFICACION";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header">
+    <h1><small>Listado De Tipo De Justificacion</small></h1>
+</div>
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Catálogos
+            <b class="caret"></b>
+        </a>
+        <ul role="menu" class="dropdown-menu">
+            <li>@Html.ActionLink("EMPLEADOS", "Index", "Empleados")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("DEPARTAMENTOS", "Index", "Departamento")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("TURNOS", "Index", "Turnos")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("JUSTIFICACION PERSONAL", "Index", "JustificacionPersonals")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("TIPO DE JUSTIFICACION", "Index", "TipoJustificacions")</li>
+        </ul>
+    </li>
+    <li class="active">Listado De Tipo Justificacion</li>
+</ol>
+<p>
+    <a class="btn btn-default" href="@Url.Action("Create","TipoJustificacions")">Registrar Justificacion</a>
+</p>
+<div class="table-responsive" style="margin-top:60px">
+    <table id="grid" class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Cod</th>
+                <th>Justificacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.IdJustificacion.ToString(), "Edit", new { id = item.IdJustificacion })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Justificacion)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

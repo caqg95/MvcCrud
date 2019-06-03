@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDAsistenciaMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDepartamento">
+    <Key>
+      <PropertyRef Name="IdDepartamento" />
+    </Key>
+    <Property Name="IdDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Departamento" Type="varchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDias">
+    <Key>
+      <PropertyRef Name="IdDias" />
+    </Key>
+    <Property Name="IdDias" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dias" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblEmpleados">
+    <Key>
+      <PropertyRef Name="IdEmpleados" />
+    </Key>
+    <Property Name="IdEmpleados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="IdDepartamento" Type="int" Nullable="false" />
+    <Property Name="IdTurno" Type="int" Nullable="false" />
+    <Property Name="Salario" Type="float" />
+    <Property Name="DiaLibre" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDAsistenciaMVC.dbo.tblJustificacionPersonal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tblJustificacionPersonal">
+    <Key>
+      <PropertyRef Name="IdEmpleados" />
+      <PropertyRef Name="IdJustificacion" />
+      <PropertyRef Name="FechaI" />
+      <PropertyRef Name="FechaF" />
+      <PropertyRef Name="IdDias" />
+    </Key>
+    <Property Name="IdEmpleados" Type="int" Nullable="false" />
+    <Property Name="IdJustificacion" Type="int" Nullable="false" />
+    <Property Name="FechaI" Type="datetime" Nullable="false" />
+    <Property Name="FechaF" Type="datetime" Nullable="false" />
+    <Property Name="IdDias" Type="int" Nullable="false" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDAsistenciaMVC.dbo.tblRegistroMarcas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tblRegistroMarcas">
+    <Key>
+      <PropertyRef Name="IdEmpleados" />
+      <PropertyRef Name="Fecha" />
+    </Key>
+    <Property Name="IdEmpleados" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="H_Ent1" Type="datetime" />
+    <Property Name="H_Sal1" Type="datetime" />
+    <Property Name="H_Ent2" Type="datetime" />
+    <Property Name="H_Sal2" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblTipoJustificacion">
+    <Key>
+      <PropertyRef Name="IdJustificacion" />
+    </Key>
+    <Property Name="IdJustificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Justificacion" Type="varchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblTurnos">
+    <Key>
+      <PropertyRef Name="IdTurno" />
+    </Key>
+    <Property Name="IdTurno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Turno" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="Lunes_Sabado_Inicio" Type="datetime" Nullable="false" />
+    <Property Name="Lunes_Sabado_Fin" Type="datetime" Nullable="false" />
+    <Property Name="HorasAlmuerzo" Type="float" Nullable="false" />
+    <Property Name="Almuerzo_Inicio" Type="datetime" Nullable="false" />
+    <Property Name="Almuerzo_Fin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JustificacionPersonal_Dias">
+    <End Role="tblDias" Type="Self.tblDias" Multiplicity="1" />
+    <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDias">
+        <PropertyRef Name="IdDias" />
+      </Principal>
+      <Dependent Role="tblJustificacionPersonal">
+        <PropertyRef Name="IdDias" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JustificacionPersonal_Empleados">
+    <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="1" />
+    <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEmpleados">
+        <PropertyRef Name="IdEmpleados" />
+      </Principal>
+      <Dependent Role="tblJustificacionPersonal">
+        <PropertyRef Name="IdEmpleados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JustificacionPersonal_TipoJustificacion">
+    <End Role="tblTipoJustificacion" Type="Self.tblTipoJustificacion" Multiplicity="1" />
+    <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTipoJustificacion">
+        <PropertyRef Name="IdJustificacion" />
+      </Principal>
+      <Dependent Role="tblJustificacionPersonal">
+        <PropertyRef Name="IdJustificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegistroMarcas_Empleados">
+    <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="1" />
+    <End Role="tblRegistroMarcas" Type="Self.tblRegistroMarcas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEmpleados">
+        <PropertyRef Name="IdEmpleados" />
+      </Principal>
+      <Dependent Role="tblRegistroMarcas">
+        <PropertyRef Name="IdEmpleados" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_EmpleadosDepartamentos">
+    <End Role="tblDepartamento" Type="Self.tblDepartamento" Multiplicity="1" />
+    <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDepartamento">
+        <PropertyRef Name="IdDepartamento" />
+      </Principal>
+      <Dependent Role="tblEmpleados">
+        <PropertyRef Name="IdDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_EmpleadosTurnos">
+    <End Role="tblTurnos" Type="Self.tblTurnos" Multiplicity="1" />
+    <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTurnos">
+        <PropertyRef Name="IdTurno" />
+      </Principal>
+      <Dependent Role="tblEmpleados">
+        <PropertyRef Name="IdTurno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Usp_DeleteDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Usp_DeleteDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdDias" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Usp_DeleteEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Usp_DeleteJustificacionPersonal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+    <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+    <Parameter Name="FechaI" Type="datetime" Mode="In" />
+    <Parameter Name="FechaF" Type="datetime" Mode="In" />
+    <Parameter Name="IdDias" Type="int" Mode="In" />
+    <Parameter Name="Observaciones" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_DeleteRegistroMarcas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+    <Parameter Name="H_Ent1" Type="datetime" Mode="In" />
+    <Parameter Name="H_Sal1" Type="datetime" Mode="In" />
+    <Parameter Name="H_Ent2" Type="datetime" Mode="In" />
+    <Parameter Name="H_Sal2" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Usp_DeleteTipoJustificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Usp_DeleteTurnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdTurno" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Usp_InsertDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Departamento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_InsertDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Dias" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Usp_InsertEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombres" Type="varchar" Mode="In" />
+    <Parameter Name="Activo" Type="bit" Mode="In" />
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="IdTurno" Type="int" Mode="In" />
+    <Parameter Name="Salario" Type="float" Mode="In" />
+    <Parameter Name="DiaLibre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_InsertJustificacionPersonal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+    <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+    <Parameter Name="FechaI" Type="datetime" Mode="In" />
+    <Parameter Name="FechaF" Type="datetime" Mode="In" />
+    <Parameter Name="IdDias" Type="int" Mode="In" />
+    <Parameter Name="Observaciones" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_InsertRegistroMarcas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+    <Parameter Name="H_Ent1" Type="datetime" Mode="In" />
+    <Parameter Name="H_Sal1" Type="datetime" Mode="In" />
+    <Parameter Name="H_Ent2" Type="datetime" Mode="In" />
+    <Parameter Name="H_Sal2" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Usp_InsertTipoJustificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Justificacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_InsertTurnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Turno" Type="varchar" Mode="In" />
+    <Parameter Name="Lunes_Sabado_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Lunes_Sabado_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="HorasAlmuerzo" Type="float" Mode="In" />
+    <Parameter Name="Almuerzo_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Almuerzo_Fin" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Usp_ListarDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_ListarDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_ListarEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_ListarJustificacionPersonal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_ListarRegistroMarcas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_ListarTipoJustificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_ListarTurnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_UpdateDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="Departamento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_UpdateDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdDias" Type="int" Mode="In" />
+    <Parameter Name="Dias" Type="float" Mode="In" />
+  </Function>
+  <Function Name="Usp_UpdateEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+    <Parameter Name="Nombres" Type="varchar" Mode="In" />
+    <Parameter Name="Activo" Type="bit" Mode="In" />
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="IdTurno" Type="int" Mode="In" />
+    <Parameter Name="Salario" Type="float" Mode="In" />
+    <Parameter Name="DiaLibre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_UpdateJustificacionPersonal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+    <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+    <Parameter Name="FechaI" Type="datetime" Mode="In" />
+    <Parameter Name="FechaF" Type="datetime" Mode="In" />
+    <Parameter Name="IdDias" Type="int" Mode="In" />
+    <Parameter Name="Observaciones" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_UpdateTipoJustificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+    <Parameter Name="Justificacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_UpdateTurnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdTurno" Type="int" Mode="In" />
+    <Parameter Name="Turno" Type="varchar" Mode="In" />
+    <Parameter Name="Lunes_Sabado_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Lunes_Sabado_Fin" Type="datetime" Mode="In" />
+    <Parameter Name="HorasAlmuerzo" Type="float" Mode="In" />
+    <Parameter Name="Almuerzo_Inicio" Type="datetime" Mode="In" />
+    <Parameter Name="Almuerzo_Fin" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="BDAsistenciaMVCModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDepartamento" EntityType="Self.tblDepartamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDias" EntityType="Self.tblDias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEmpleados" EntityType="Self.tblEmpleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTipoJustificacion" EntityType="Self.tblTipoJustificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTurnos" EntityType="Self.tblTurnos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblJustificacionPersonal" EntityType="Self.tblJustificacionPersonal" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblJustificacionPersonal].[IdEmpleados] AS [IdEmpleados], 
+    [tblJustificacionPersonal].[IdJustificacion] AS [IdJustificacion], 
+    [tblJustificacionPersonal].[FechaI] AS [FechaI], 
+    [tblJustificacionPersonal].[FechaF] AS [FechaF], 
+    [tblJustificacionPersonal].[IdDias] AS [IdDias], 
+    [tblJustificacionPersonal].[Observaciones] AS [Observaciones]
+    FROM [dbo].[tblJustificacionPersonal] AS [tblJustificacionPersonal]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblRegistroMarcas" EntityType="Self.tblRegistroMarcas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblRegistroMarcas].[IdEmpleados] AS [IdEmpleados], 
+    [tblRegistroMarcas].[Fecha] AS [Fecha], 
+    [tblRegistroMarcas].[H_Ent1] AS [H_Ent1], 
+    [tblRegistroMarcas].[H_Sal1] AS [H_Sal1], 
+    [tblRegistroMarcas].[H_Ent2] AS [H_Ent2], 
+    [tblRegistroMarcas].[H_Sal2] AS [H_Sal2]
+    FROM [dbo].[tblRegistroMarcas] AS [tblRegistroMarcas]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JustificacionPersonal_Dias" Association="Self.FK_JustificacionPersonal_Dias">
+      <End Role="tblDias" EntitySet="tblDias" />
+      <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JustificacionPersonal_Empleados" Association="Self.FK_JustificacionPersonal_Empleados">
+      <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+      <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JustificacionPersonal_TipoJustificacion" Association="Self.FK_JustificacionPersonal_TipoJustificacion">
+      <End Role="tblTipoJustificacion" EntitySet="tblTipoJustificacion" />
+      <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistroMarcas_Empleados" Association="Self.FK_RegistroMarcas_Empleados">
+      <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+      <End Role="tblRegistroMarcas" EntitySet="tblRegistroMarcas" />
+    </AssociationSet>
+    <AssociationSet Name="PK_EmpleadosDepartamentos" Association="Self.PK_EmpleadosDepartamentos">
+      <End Role="tblDepartamento" EntitySet="tblDepartamento" />
+      <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+    </AssociationSet>
+    <AssociationSet Name="PK_EmpleadosTurnos" Association="Self.PK_EmpleadosTurnos">
+      <End Role="tblTurnos" EntitySet="tblTurnos" />
+      <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

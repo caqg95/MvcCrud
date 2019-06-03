@@ -1,0 +1,70 @@
+﻿@model ConexionLinQMVC.Data.tblTurnos
+
+@{
+    ViewBag.Title = "Eliminar Turno";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar Turno</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Turno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Turno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lunes_Sabado_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lunes_Sabado_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lunes_Sabado_Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lunes_Sabado_Fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorasAlmuerzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorasAlmuerzo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Almuerzo_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almuerzo_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Almuerzo_Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almuerzo_Fin)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar Turno" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a la Lista", "Index")
+        </div>
+    }
+</div>

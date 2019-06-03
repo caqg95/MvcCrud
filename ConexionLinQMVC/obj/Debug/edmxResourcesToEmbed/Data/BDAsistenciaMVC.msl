@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDAsistenciaMVCModelStoreContainer" CdmEntityContainer="BDAsistenciaMVCEntities">
+    <EntitySetMapping Name="tblDepartamento">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblDepartamento">
+        <MappingFragment StoreEntitySet="tblDepartamento">
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblDepartamento">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertDepartamento">
+            <ScalarProperty Name="Departamento" ParameterName="Departamento" />
+            <ResultBinding Name="IdDepartamento" ColumnName="IdDepartamento" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateDepartamento">
+            <ScalarProperty Name="Departamento" ParameterName="Departamento" Version="Current" />
+            <ScalarProperty Name="IdDepartamento" ParameterName="IdDepartamento" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteDepartamento">
+            <ScalarProperty Name="IdDepartamento" ParameterName="IdDepartamento" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDias">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblDias">
+        <MappingFragment StoreEntitySet="tblDias">
+          <ScalarProperty Name="IdDias" ColumnName="IdDias" />
+          <ScalarProperty Name="Dias" ColumnName="Dias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblDias">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertDias">
+            <ScalarProperty Name="Dias" ParameterName="Dias" />
+            <ResultBinding Name="IdDias" ColumnName="IdDias" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateDias">
+            <ScalarProperty Name="Dias" ParameterName="Dias" Version="Current" />
+            <ScalarProperty Name="IdDias" ParameterName="IdDias" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteDias">
+            <ScalarProperty Name="IdDias" ParameterName="IdDias" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpleados">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblEmpleados">
+        <MappingFragment StoreEntitySet="tblEmpleados">
+          <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="DiaLibre" ColumnName="DiaLibre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblEmpleados">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertEmpleados">
+            <ScalarProperty Name="DiaLibre" ParameterName="DiaLibre" />
+            <ScalarProperty Name="Salario" ParameterName="Salario" />
+            <ScalarProperty Name="IdTurno" ParameterName="IdTurno" />
+            <ScalarProperty Name="IdDepartamento" ParameterName="IdDepartamento" />
+            <ScalarProperty Name="Activo" ParameterName="Activo" />
+            <ScalarProperty Name="Nombres" ParameterName="Nombres" />
+            <ResultBinding Name="IdEmpleados" ColumnName="IdEmpleados" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateEmpleados">
+            <ScalarProperty Name="DiaLibre" ParameterName="DiaLibre" Version="Current" />
+            <ScalarProperty Name="Salario" ParameterName="Salario" Version="Current" />
+            <ScalarProperty Name="IdTurno" ParameterName="IdTurno" Version="Current" />
+            <ScalarProperty Name="IdDepartamento" ParameterName="IdDepartamento" Version="Current" />
+            <ScalarProperty Name="Activo" ParameterName="Activo" Version="Current" />
+            <ScalarProperty Name="Nombres" ParameterName="Nombres" Version="Current" />
+            <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteEmpleados">
+            <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTipoJustificacion">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblTipoJustificacion">
+        <MappingFragment StoreEntitySet="tblTipoJustificacion">
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblTipoJustificacion">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertTipoJustificacion">
+            <ScalarProperty Name="Justificacion" ParameterName="Justificacion" />
+            <ResultBinding Name="IdJustificacion" ColumnName="IdJustificacion" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateTipoJustificacion">
+            <ScalarProperty Name="Justificacion" ParameterName="Justificacion" Version="Current" />
+            <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteTipoJustificacion">
+            <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTurnos">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblTurnos">
+        <MappingFragment StoreEntitySet="tblTurnos">
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+          <ScalarProperty Name="Turno" ColumnName="Turno" />
+          <ScalarProperty Name="Lunes_Sabado_Inicio" ColumnName="Lunes_Sabado_Inicio" />
+          <ScalarProperty Name="Lunes_Sabado_Fin" ColumnName="Lunes_Sabado_Fin" />
+          <ScalarProperty Name="HorasAlmuerzo" ColumnName="HorasAlmuerzo" />
+          <ScalarProperty Name="Almuerzo_Inicio" ColumnName="Almuerzo_Inicio" />
+          <ScalarProperty Name="Almuerzo_Fin" ColumnName="Almuerzo_Fin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblTurnos">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertTurnos">
+            <ScalarProperty Name="Almuerzo_Fin" ParameterName="Almuerzo_Fin" />
+            <ScalarProperty Name="Almuerzo_Inicio" ParameterName="Almuerzo_Inicio" />
+            <ScalarProperty Name="HorasAlmuerzo" ParameterName="HorasAlmuerzo" />
+            <ScalarProperty Name="Lunes_Sabado_Fin" ParameterName="Lunes_Sabado_Fin" />
+            <ScalarProperty Name="Lunes_Sabado_Inicio" ParameterName="Lunes_Sabado_Inicio" />
+            <ScalarProperty Name="Turno" ParameterName="Turno" />
+            <ResultBinding Name="IdTurno" ColumnName="IdTurno" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateTurnos">
+            <ScalarProperty Name="Almuerzo_Fin" ParameterName="Almuerzo_Fin" Version="Current" />
+            <ScalarProperty Name="Almuerzo_Inicio" ParameterName="Almuerzo_Inicio" Version="Current" />
+            <ScalarProperty Name="HorasAlmuerzo" ParameterName="HorasAlmuerzo" Version="Current" />
+            <ScalarProperty Name="Lunes_Sabado_Fin" ParameterName="Lunes_Sabado_Fin" Version="Current" />
+            <ScalarProperty Name="Lunes_Sabado_Inicio" ParameterName="Lunes_Sabado_Inicio" Version="Current" />
+            <ScalarProperty Name="Turno" ParameterName="Turno" Version="Current" />
+            <ScalarProperty Name="IdTurno" ParameterName="IdTurno" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteTurnos">
+            <ScalarProperty Name="IdTurno" ParameterName="IdTurno" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblJustificacionPersonal">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblJustificacionPersonal">
+        <MappingFragment StoreEntitySet="tblJustificacionPersonal">
+          <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="FechaI" ColumnName="FechaI" />
+          <ScalarProperty Name="FechaF" ColumnName="FechaF" />
+          <ScalarProperty Name="IdDias" ColumnName="IdDias" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblJustificacionPersonal">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertJustificacionPersonal">
+            <ScalarProperty Name="Observaciones" ParameterName="Observaciones" />
+            <ScalarProperty Name="IdDias" ParameterName="IdDias" />
+            <ScalarProperty Name="FechaF" ParameterName="FechaF" />
+            <ScalarProperty Name="FechaI" ParameterName="FechaI" />
+            <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" />
+            <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateJustificacionPersonal">
+            <ScalarProperty Name="Observaciones" ParameterName="Observaciones" Version="Current" />
+            <ScalarProperty Name="IdDias" ParameterName="IdDias" Version="Current" />
+            <ScalarProperty Name="FechaF" ParameterName="FechaF" Version="Current" />
+            <ScalarProperty Name="FechaI" ParameterName="FechaI" Version="Current" />
+            <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" Version="Current" />
+            <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteJustificacionPersonal">
+            <ScalarProperty Name="Observaciones" ParameterName="Observaciones" />
+            <ScalarProperty Name="IdDias" ParameterName="IdDias" />
+            <ScalarProperty Name="FechaF" ParameterName="FechaF" />
+            <ScalarProperty Name="FechaI" ParameterName="FechaI" />
+            <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" />
+            <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRegistroMarcas">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblRegistroMarcas">
+        <MappingFragment StoreEntitySet="tblRegistroMarcas">
+          <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="H_Ent1" ColumnName="H_Ent1" />
+          <ScalarProperty Name="H_Sal1" ColumnName="H_Sal1" />
+          <ScalarProperty Name="H_Ent2" ColumnName="H_Ent2" />
+          <ScalarProperty Name="H_Sal2" ColumnName="H_Sal2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblRegistroMarcas">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertRegistroMarcas">
+            <ScalarProperty Name="H_Sal2" ParameterName="H_Sal2" />
+            <ScalarProperty Name="H_Ent2" ParameterName="H_Ent2" />
+            <ScalarProperty Name="H_Sal1" ParameterName="H_Sal1" />
+            <ScalarProperty Name="H_Ent1" ParameterName="H_Ent1" />
+            <ScalarProperty Name="Fecha" ParameterName="Fecha" />
+            <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+          </InsertFunction>
+          <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteRegistroMarcas">
+            <ScalarProperty Name="H_Sal2" ParameterName="H_Sal2" />
+            <ScalarProperty Name="H_Ent2" ParameterName="H_Ent2" />
+            <ScalarProperty Name="H_Sal1" ParameterName="H_Sal1" />
+            <ScalarProperty Name="H_Ent1" ParameterName="H_Ent1" />
+            <ScalarProperty Name="Fecha" ParameterName="Fecha" />
+            <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Usp_ListarDepartamento" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarDepartamento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarDepartamento_Result">
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_DeleteDepartamento" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteDepartamento" />
+    <FunctionImportMapping FunctionImportName="Usp_InsertDepartamento" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertDepartamento" />
+    <FunctionImportMapping FunctionImportName="Usp_UpdateDepartamento" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateDepartamento" />
+    <FunctionImportMapping FunctionImportName="Usp_DeleteDias" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteDias" />
+    <FunctionImportMapping FunctionImportName="Usp_InsertDias" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertDias" />
+    <FunctionImportMapping FunctionImportName="Usp_UpdateDias" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateDias" />
+    <FunctionImportMapping FunctionImportName="Usp_DeleteEmpleados" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteEmpleados" />
+    <FunctionImportMapping FunctionImportName="Usp_InsertEmpleados" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertEmpleados" />
+    <FunctionImportMapping FunctionImportName="Usp_UpdateEmpleados" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateEmpleados" />
+    <FunctionImportMapping FunctionImportName="Usp_DeleteTipoJustificacion" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteTipoJustificacion" />
+    <FunctionImportMapping FunctionImportName="Usp_InsertTipoJustificacion" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertTipoJustificacion" />
+    <FunctionImportMapping FunctionImportName="Usp_UpdateTipoJustificacion" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateTipoJustificacion" />
+    <FunctionImportMapping FunctionImportName="Usp_ListarEmpleados" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarEmpleados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarEmpleados_Result">
+          <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="DiaLibre" ColumnName="DiaLibre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_DeleteTurnos" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteTurnos" />
+    <FunctionImportMapping FunctionImportName="Usp_InsertTurnos" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertTurnos" />
+    <FunctionImportMapping FunctionImportName="Usp_ListarTurnos" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarTurnos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarTurnos_Result">
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+          <ScalarProperty Name="Turno" ColumnName="Turno" />
+          <ScalarProperty Name="Lunes_Sabado_Inicio" ColumnName="Lunes_Sabado_Inicio" />
+          <ScalarProperty Name="Lunes_Sabado_Fin" ColumnName="Lunes_Sabado_Fin" />
+          <ScalarProperty Name="HorasAlmuerzo" ColumnName="HorasAlmuerzo" />
+          <ScalarProperty Name="Almuerzo_Inicio" ColumnName="Almuerzo_Inicio" />
+          <ScalarProperty Name="Almuerzo_Fin" ColumnName="Almuerzo_Fin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_UpdateTurnos" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateTurnos" />
+    <FunctionImportMapping FunctionImportName="Usp_ListarDias" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarDias">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarDias_Result">
+          <ScalarProperty Name="IdDias" ColumnName="IdDias" />
+          <ScalarProperty Name="Dias" ColumnName="Dias" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_ListarTipoJustificacion" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarTipoJustificacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarTipoJustificacion_Result">
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_DeleteJustificacionPersonal" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteJustificacionPersonal" />
+    <FunctionImportMapping FunctionImportName="Usp_InsertJustificacionPersonal" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertJustificacionPersonal" />
+    <FunctionImportMapping FunctionImportName="Usp_UpdateJustificacionPersonal" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateJustificacionPersonal" />
+    <FunctionImportMapping FunctionImportName="Usp_DeleteRegistroMarcas" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteRegistroMarcas" />
+    <FunctionImportMapping FunctionImportName="Usp_InsertRegistroMarcas" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertRegistroMarcas" />
+    <FunctionImportMapping FunctionImportName="Usp_ListarJustificacionPersonal" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarJustificacionPersonal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarJustificacionPersonal_Result">
+          <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+          <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+          <ScalarProperty Name="FechaI" ColumnName="FechaI" />
+          <ScalarProperty Name="FechaF" ColumnName="FechaF" />
+          <ScalarProperty Name="IdDias" ColumnName="IdDias" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_ListarRegistroMarcas" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarRegistroMarcas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarRegistroMarcas_Result">
+          <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="H_Ent1" ColumnName="H_Ent1" />
+          <ScalarProperty Name="H_Sal1" ColumnName="H_Sal1" />
+          <ScalarProperty Name="H_Ent2" ColumnName="H_Ent2" />
+          <ScalarProperty Name="H_Sal2" ColumnName="H_Sal2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="BDAsistenciaMVCModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="BDAsistenciaMVCModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

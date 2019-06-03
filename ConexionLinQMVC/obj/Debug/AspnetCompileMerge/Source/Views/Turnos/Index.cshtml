@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ConexionLinQMVC.Data.tblTurnos>
+
+@{
+    ViewBag.Title = "TURNOS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header">
+    <h1><small>Listado de Turnos</small></h1>
+</div>
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Catálogos
+            <b class="caret"></b>
+        </a>
+        <ul role="menu" class="dropdown-menu">
+            <li>@Html.ActionLink("EMPLEADOS", "Index", "Empleados")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("DEPARTAMENTOS", "Index", "Departamento")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("TURNOS", "Index", "Turnos")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("JUSTIFICACION PERSONAL", "Index", "JustificacionPersonals")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("TIPO DE JUSTIFICACION", "Index", "TipoJustificacions")</li>
+        </ul>
+    </li>
+    <li class="active">Listado De Turnos</li>
+</ol>
+<p>
+    <a class="btn btn-default" href="@Url.Action("Create","Turnos")">Nuevo Turno</a>
+</p>
+<div class="table-responsive" style="margin-top:60px">
+    <table id="grid" class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Cod Turno</th>
+                <th>Turno</th>
+                <th>Inicio de Lunes A Sabado</th>
+                <th>Fin de Lunes A Sabado</th>
+                <th>Horas De Almuerzo</th>
+                <th>Inicio de Hora de Almuerzo</th>
+                <th>Fin de Hora de Almuerzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.IdTurno.ToString(), "Edit", new { id = item.IdTurno })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Turno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lunes_Sabado_Inicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lunes_Sabado_Fin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HorasAlmuerzo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Almuerzo_Inicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Almuerzo_Fin)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+

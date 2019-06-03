@@ -1,0 +1,1298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDAsistenciaMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDepartamento">
+          <Key>
+            <PropertyRef Name="IdDepartamento" />
+          </Key>
+          <Property Name="IdDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departamento" Type="varchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDias">
+          <Key>
+            <PropertyRef Name="IdDias" />
+          </Key>
+          <Property Name="IdDias" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dias" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEmpleados">
+          <Key>
+            <PropertyRef Name="IdEmpleados" />
+          </Key>
+          <Property Name="IdEmpleados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IdDepartamento" Type="int" Nullable="false" />
+          <Property Name="IdTurno" Type="int" Nullable="false" />
+          <Property Name="Salario" Type="float" />
+          <Property Name="DiaLibre" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDAsistenciaMVC.dbo.tblJustificacionPersonal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="tblJustificacionPersonal">
+          <Key>
+            <PropertyRef Name="IdEmpleados" />
+            <PropertyRef Name="IdJustificacion" />
+            <PropertyRef Name="FechaI" />
+            <PropertyRef Name="FechaF" />
+            <PropertyRef Name="IdDias" />
+          </Key>
+          <Property Name="IdEmpleados" Type="int" Nullable="false" />
+          <Property Name="IdJustificacion" Type="int" Nullable="false" />
+          <Property Name="FechaI" Type="datetime" Nullable="false" />
+          <Property Name="FechaF" Type="datetime" Nullable="false" />
+          <Property Name="IdDias" Type="int" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDAsistenciaMVC.dbo.tblRegistroMarcas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="tblRegistroMarcas">
+          <Key>
+            <PropertyRef Name="IdEmpleados" />
+            <PropertyRef Name="Fecha" />
+          </Key>
+          <Property Name="IdEmpleados" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="H_Ent1" Type="datetime" />
+          <Property Name="H_Sal1" Type="datetime" />
+          <Property Name="H_Ent2" Type="datetime" />
+          <Property Name="H_Sal2" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblTipoJustificacion">
+          <Key>
+            <PropertyRef Name="IdJustificacion" />
+          </Key>
+          <Property Name="IdJustificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Justificacion" Type="varchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTurnos">
+          <Key>
+            <PropertyRef Name="IdTurno" />
+          </Key>
+          <Property Name="IdTurno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Turno" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Lunes_Sabado_Inicio" Type="datetime" Nullable="false" />
+          <Property Name="Lunes_Sabado_Fin" Type="datetime" Nullable="false" />
+          <Property Name="HorasAlmuerzo" Type="float" Nullable="false" />
+          <Property Name="Almuerzo_Inicio" Type="datetime" Nullable="false" />
+          <Property Name="Almuerzo_Fin" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JustificacionPersonal_Dias">
+          <End Role="tblDias" Type="Self.tblDias" Multiplicity="1" />
+          <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDias">
+              <PropertyRef Name="IdDias" />
+            </Principal>
+            <Dependent Role="tblJustificacionPersonal">
+              <PropertyRef Name="IdDias" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JustificacionPersonal_Empleados">
+          <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="1" />
+          <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleados">
+              <PropertyRef Name="IdEmpleados" />
+            </Principal>
+            <Dependent Role="tblJustificacionPersonal">
+              <PropertyRef Name="IdEmpleados" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JustificacionPersonal_TipoJustificacion">
+          <End Role="tblTipoJustificacion" Type="Self.tblTipoJustificacion" Multiplicity="1" />
+          <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoJustificacion">
+              <PropertyRef Name="IdJustificacion" />
+            </Principal>
+            <Dependent Role="tblJustificacionPersonal">
+              <PropertyRef Name="IdJustificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroMarcas_Empleados">
+          <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="1" />
+          <End Role="tblRegistroMarcas" Type="Self.tblRegistroMarcas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleados">
+              <PropertyRef Name="IdEmpleados" />
+            </Principal>
+            <Dependent Role="tblRegistroMarcas">
+              <PropertyRef Name="IdEmpleados" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_EmpleadosDepartamentos">
+          <End Role="tblDepartamento" Type="Self.tblDepartamento" Multiplicity="1" />
+          <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDepartamento">
+              <PropertyRef Name="IdDepartamento" />
+            </Principal>
+            <Dependent Role="tblEmpleados">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_EmpleadosTurnos">
+          <End Role="tblTurnos" Type="Self.tblTurnos" Multiplicity="1" />
+          <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTurnos">
+              <PropertyRef Name="IdTurno" />
+            </Principal>
+            <Dependent Role="tblEmpleados">
+              <PropertyRef Name="IdTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Usp_DeleteDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Usp_DeleteDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDias" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Usp_DeleteEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Usp_DeleteJustificacionPersonal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+          <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+          <Parameter Name="FechaI" Type="datetime" Mode="In" />
+          <Parameter Name="FechaF" Type="datetime" Mode="In" />
+          <Parameter Name="IdDias" Type="int" Mode="In" />
+          <Parameter Name="Observaciones" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_DeleteRegistroMarcas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="H_Ent1" Type="datetime" Mode="In" />
+          <Parameter Name="H_Sal1" Type="datetime" Mode="In" />
+          <Parameter Name="H_Ent2" Type="datetime" Mode="In" />
+          <Parameter Name="H_Sal2" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Usp_DeleteTipoJustificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Usp_DeleteTurnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdTurno" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Usp_InsertDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Departamento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_InsertDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Dias" Type="float" Mode="In" />
+        </Function>
+        <Function Name="Usp_InsertEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombres" Type="varchar" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+          <Parameter Name="IdTurno" Type="int" Mode="In" />
+          <Parameter Name="Salario" Type="float" Mode="In" />
+          <Parameter Name="DiaLibre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_InsertJustificacionPersonal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+          <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+          <Parameter Name="FechaI" Type="datetime" Mode="In" />
+          <Parameter Name="FechaF" Type="datetime" Mode="In" />
+          <Parameter Name="IdDias" Type="int" Mode="In" />
+          <Parameter Name="Observaciones" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_InsertRegistroMarcas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="H_Ent1" Type="datetime" Mode="In" />
+          <Parameter Name="H_Sal1" Type="datetime" Mode="In" />
+          <Parameter Name="H_Ent2" Type="datetime" Mode="In" />
+          <Parameter Name="H_Sal2" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Usp_InsertTipoJustificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Justificacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_InsertTurnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Turno" Type="varchar" Mode="In" />
+          <Parameter Name="Lunes_Sabado_Inicio" Type="datetime" Mode="In" />
+          <Parameter Name="Lunes_Sabado_Fin" Type="datetime" Mode="In" />
+          <Parameter Name="HorasAlmuerzo" Type="float" Mode="In" />
+          <Parameter Name="Almuerzo_Inicio" Type="datetime" Mode="In" />
+          <Parameter Name="Almuerzo_Fin" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Usp_ListarDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListarDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListarEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListarJustificacionPersonal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListarRegistroMarcas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListarTipoJustificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListarTurnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_UpdateDepartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+          <Parameter Name="Departamento" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_UpdateDias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDias" Type="int" Mode="In" />
+          <Parameter Name="Dias" Type="float" Mode="In" />
+        </Function>
+        <Function Name="Usp_UpdateEmpleados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+          <Parameter Name="Nombres" Type="varchar" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+          <Parameter Name="IdTurno" Type="int" Mode="In" />
+          <Parameter Name="Salario" Type="float" Mode="In" />
+          <Parameter Name="DiaLibre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_UpdateJustificacionPersonal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleados" Type="int" Mode="In" />
+          <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+          <Parameter Name="FechaI" Type="datetime" Mode="In" />
+          <Parameter Name="FechaF" Type="datetime" Mode="In" />
+          <Parameter Name="IdDias" Type="int" Mode="In" />
+          <Parameter Name="Observaciones" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_UpdateTipoJustificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdJustificacion" Type="int" Mode="In" />
+          <Parameter Name="Justificacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Usp_UpdateTurnos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdTurno" Type="int" Mode="In" />
+          <Parameter Name="Turno" Type="varchar" Mode="In" />
+          <Parameter Name="Lunes_Sabado_Inicio" Type="datetime" Mode="In" />
+          <Parameter Name="Lunes_Sabado_Fin" Type="datetime" Mode="In" />
+          <Parameter Name="HorasAlmuerzo" Type="float" Mode="In" />
+          <Parameter Name="Almuerzo_Inicio" Type="datetime" Mode="In" />
+          <Parameter Name="Almuerzo_Fin" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="BDAsistenciaMVCModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDepartamento" EntityType="Self.tblDepartamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDias" EntityType="Self.tblDias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpleados" EntityType="Self.tblEmpleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTipoJustificacion" EntityType="Self.tblTipoJustificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTurnos" EntityType="Self.tblTurnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblJustificacionPersonal" EntityType="Self.tblJustificacionPersonal" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblJustificacionPersonal].[IdEmpleados] AS [IdEmpleados], 
+    [tblJustificacionPersonal].[IdJustificacion] AS [IdJustificacion], 
+    [tblJustificacionPersonal].[FechaI] AS [FechaI], 
+    [tblJustificacionPersonal].[FechaF] AS [FechaF], 
+    [tblJustificacionPersonal].[IdDias] AS [IdDias], 
+    [tblJustificacionPersonal].[Observaciones] AS [Observaciones]
+    FROM [dbo].[tblJustificacionPersonal] AS [tblJustificacionPersonal]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblRegistroMarcas" EntityType="Self.tblRegistroMarcas" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblRegistroMarcas].[IdEmpleados] AS [IdEmpleados], 
+    [tblRegistroMarcas].[Fecha] AS [Fecha], 
+    [tblRegistroMarcas].[H_Ent1] AS [H_Ent1], 
+    [tblRegistroMarcas].[H_Sal1] AS [H_Sal1], 
+    [tblRegistroMarcas].[H_Ent2] AS [H_Ent2], 
+    [tblRegistroMarcas].[H_Sal2] AS [H_Sal2]
+    FROM [dbo].[tblRegistroMarcas] AS [tblRegistroMarcas]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JustificacionPersonal_Dias" Association="Self.FK_JustificacionPersonal_Dias">
+            <End Role="tblDias" EntitySet="tblDias" />
+            <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JustificacionPersonal_Empleados" Association="Self.FK_JustificacionPersonal_Empleados">
+            <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+            <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JustificacionPersonal_TipoJustificacion" Association="Self.FK_JustificacionPersonal_TipoJustificacion">
+            <End Role="tblTipoJustificacion" EntitySet="tblTipoJustificacion" />
+            <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroMarcas_Empleados" Association="Self.FK_RegistroMarcas_Empleados">
+            <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+            <End Role="tblRegistroMarcas" EntitySet="tblRegistroMarcas" />
+          </AssociationSet>
+          <AssociationSet Name="PK_EmpleadosDepartamentos" Association="Self.PK_EmpleadosDepartamentos">
+            <End Role="tblDepartamento" EntitySet="tblDepartamento" />
+            <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+          </AssociationSet>
+          <AssociationSet Name="PK_EmpleadosTurnos" Association="Self.PK_EmpleadosTurnos">
+            <End Role="tblTurnos" EntitySet="tblTurnos" />
+            <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDAsistenciaMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblDepartamento">
+          <Key>
+            <PropertyRef Name="IdDepartamento" />
+          </Key>
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departamento" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblEmpleados" Relationship="Self.PK_EmpleadosDepartamentos" FromRole="tblDepartamento" ToRole="tblEmpleados" />
+        </EntityType>
+        <EntityType Name="tblDias">
+          <Key>
+            <PropertyRef Name="IdDias" />
+          </Key>
+          <Property Name="IdDias" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dias" Type="Double" Nullable="false" />
+          <NavigationProperty Name="tblJustificacionPersonal" Relationship="Self.FK_JustificacionPersonal_Dias" FromRole="tblDias" ToRole="tblJustificacionPersonal" />
+        </EntityType>
+        <EntityType Name="tblEmpleados">
+          <Key>
+            <PropertyRef Name="IdEmpleados" />
+          </Key>
+          <Property Name="IdEmpleados" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="IdTurno" Type="Int32" Nullable="false" />
+          <Property Name="Salario" Type="Double" />
+          <Property Name="DiaLibre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblDepartamento" Relationship="Self.PK_EmpleadosDepartamentos" FromRole="tblEmpleados" ToRole="tblDepartamento" />
+          <NavigationProperty Name="tblJustificacionPersonal" Relationship="Self.FK_JustificacionPersonal_Empleados" FromRole="tblEmpleados" ToRole="tblJustificacionPersonal" />
+          <NavigationProperty Name="tblRegistroMarcas" Relationship="Self.FK_RegistroMarcas_Empleados" FromRole="tblEmpleados" ToRole="tblRegistroMarcas" />
+          <NavigationProperty Name="tblTurnos" Relationship="Self.PK_EmpleadosTurnos" FromRole="tblEmpleados" ToRole="tblTurnos" />
+        </EntityType>
+        <EntityType Name="tblTipoJustificacion">
+          <Key>
+            <PropertyRef Name="IdJustificacion" />
+          </Key>
+          <Property Name="IdJustificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Justificacion" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblJustificacionPersonal" Relationship="Self.FK_JustificacionPersonal_TipoJustificacion" FromRole="tblTipoJustificacion" ToRole="tblJustificacionPersonal" />
+        </EntityType>
+        <EntityType Name="tblTurnos">
+          <Key>
+            <PropertyRef Name="IdTurno" />
+          </Key>
+          <Property Name="IdTurno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Turno" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lunes_Sabado_Inicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Lunes_Sabado_Fin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HorasAlmuerzo" Type="Double" Nullable="false" />
+          <Property Name="Almuerzo_Inicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Almuerzo_Fin" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblEmpleados" Relationship="Self.PK_EmpleadosTurnos" FromRole="tblTurnos" ToRole="tblEmpleados" />
+        </EntityType>
+        <EntityType Name="tblJustificacionPersonal">
+          <Key>
+            <PropertyRef Name="IdEmpleados" />
+            <PropertyRef Name="IdJustificacion" />
+            <PropertyRef Name="FechaI" />
+            <PropertyRef Name="FechaF" />
+            <PropertyRef Name="IdDias" />
+          </Key>
+          <Property Name="IdEmpleados" Type="Int32" Nullable="false" />
+          <Property Name="IdJustificacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaI" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaF" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdDias" Type="Int32" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblDias" Relationship="Self.FK_JustificacionPersonal_Dias" FromRole="tblJustificacionPersonal" ToRole="tblDias" />
+          <NavigationProperty Name="tblEmpleados" Relationship="Self.FK_JustificacionPersonal_Empleados" FromRole="tblJustificacionPersonal" ToRole="tblEmpleados" />
+          <NavigationProperty Name="tblTipoJustificacion" Relationship="Self.FK_JustificacionPersonal_TipoJustificacion" FromRole="tblJustificacionPersonal" ToRole="tblTipoJustificacion" />
+        </EntityType>
+        <EntityType Name="tblRegistroMarcas">
+          <Key>
+            <PropertyRef Name="IdEmpleados" />
+            <PropertyRef Name="Fecha" />
+          </Key>
+          <Property Name="IdEmpleados" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="H_Ent1" Type="DateTime" Precision="3" />
+          <Property Name="H_Sal1" Type="DateTime" Precision="3" />
+          <Property Name="H_Ent2" Type="DateTime" Precision="3" />
+          <Property Name="H_Sal2" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpleados" Relationship="Self.FK_RegistroMarcas_Empleados" FromRole="tblRegistroMarcas" ToRole="tblEmpleados" />
+        </EntityType>
+        <Association Name="PK_EmpleadosDepartamentos">
+          <End Role="tblDepartamento" Type="Self.tblDepartamento" Multiplicity="1" />
+          <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDepartamento">
+              <PropertyRef Name="IdDepartamento" />
+            </Principal>
+            <Dependent Role="tblEmpleados">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JustificacionPersonal_Dias">
+          <End Role="tblDias" Type="Self.tblDias" Multiplicity="1" />
+          <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDias">
+              <PropertyRef Name="IdDias" />
+            </Principal>
+            <Dependent Role="tblJustificacionPersonal">
+              <PropertyRef Name="IdDias" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JustificacionPersonal_Empleados">
+          <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="1" />
+          <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleados">
+              <PropertyRef Name="IdEmpleados" />
+            </Principal>
+            <Dependent Role="tblJustificacionPersonal">
+              <PropertyRef Name="IdEmpleados" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroMarcas_Empleados">
+          <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="1" />
+          <End Role="tblRegistroMarcas" Type="Self.tblRegistroMarcas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpleados">
+              <PropertyRef Name="IdEmpleados" />
+            </Principal>
+            <Dependent Role="tblRegistroMarcas">
+              <PropertyRef Name="IdEmpleados" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_EmpleadosTurnos">
+          <End Role="tblTurnos" Type="Self.tblTurnos" Multiplicity="1" />
+          <End Role="tblEmpleados" Type="Self.tblEmpleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTurnos">
+              <PropertyRef Name="IdTurno" />
+            </Principal>
+            <Dependent Role="tblEmpleados">
+              <PropertyRef Name="IdTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JustificacionPersonal_TipoJustificacion">
+          <End Role="tblTipoJustificacion" Type="Self.tblTipoJustificacion" Multiplicity="1" />
+          <End Role="tblJustificacionPersonal" Type="Self.tblJustificacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoJustificacion">
+              <PropertyRef Name="IdJustificacion" />
+            </Principal>
+            <Dependent Role="tblJustificacionPersonal">
+              <PropertyRef Name="IdJustificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDAsistenciaMVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblDepartamento" EntityType="Self.tblDepartamento" />
+          <EntitySet Name="tblDias" EntityType="Self.tblDias" />
+          <EntitySet Name="tblEmpleados" EntityType="Self.tblEmpleados" />
+          <EntitySet Name="tblTipoJustificacion" EntityType="Self.tblTipoJustificacion" />
+          <EntitySet Name="tblTurnos" EntityType="Self.tblTurnos" />
+          <EntitySet Name="tblJustificacionPersonal" EntityType="Self.tblJustificacionPersonal" />
+          <EntitySet Name="tblRegistroMarcas" EntityType="Self.tblRegistroMarcas" />
+          <AssociationSet Name="PK_EmpleadosDepartamentos" Association="Self.PK_EmpleadosDepartamentos">
+            <End Role="tblDepartamento" EntitySet="tblDepartamento" />
+            <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JustificacionPersonal_Dias" Association="Self.FK_JustificacionPersonal_Dias">
+            <End Role="tblDias" EntitySet="tblDias" />
+            <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JustificacionPersonal_Empleados" Association="Self.FK_JustificacionPersonal_Empleados">
+            <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+            <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroMarcas_Empleados" Association="Self.FK_RegistroMarcas_Empleados">
+            <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+            <End Role="tblRegistroMarcas" EntitySet="tblRegistroMarcas" />
+          </AssociationSet>
+          <AssociationSet Name="PK_EmpleadosTurnos" Association="Self.PK_EmpleadosTurnos">
+            <End Role="tblTurnos" EntitySet="tblTurnos" />
+            <End Role="tblEmpleados" EntitySet="tblEmpleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JustificacionPersonal_TipoJustificacion" Association="Self.FK_JustificacionPersonal_TipoJustificacion">
+            <End Role="tblTipoJustificacion" EntitySet="tblTipoJustificacion" />
+            <End Role="tblJustificacionPersonal" EntitySet="tblJustificacionPersonal" />
+          </AssociationSet>
+          <FunctionImport Name="Usp_ListarDepartamento" ReturnType="Collection(BDAsistenciaMVCModel.Usp_ListarDepartamento_Result)" />
+          <FunctionImport Name="Usp_DeleteDepartamento">
+          <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_InsertDepartamento" ReturnType="Collection(Decimal)">
+          <Parameter Name="Departamento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_UpdateDepartamento">
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="Departamento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_DeleteDias">
+          <Parameter Name="IdDias" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_InsertDias" ReturnType="Collection(Decimal)">
+          <Parameter Name="Dias" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_UpdateDias">
+            <Parameter Name="IdDias" Mode="In" Type="Int32" />
+            <Parameter Name="Dias" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_DeleteEmpleados">
+          <Parameter Name="IdEmpleados" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_InsertEmpleados" ReturnType="Collection(Decimal)">
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="IdTurno" Mode="In" Type="Int32" />
+            <Parameter Name="Salario" Mode="In" Type="Double" />
+            <Parameter Name="DiaLibre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_UpdateEmpleados">
+            <Parameter Name="IdEmpleados" Mode="In" Type="Int32" />
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="IdTurno" Mode="In" Type="Int32" />
+            <Parameter Name="Salario" Mode="In" Type="Double" />
+            <Parameter Name="DiaLibre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_DeleteTipoJustificacion">
+          <Parameter Name="IdJustificacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_InsertTipoJustificacion" ReturnType="Collection(Decimal)">
+          <Parameter Name="Justificacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_UpdateTipoJustificacion">
+            <Parameter Name="IdJustificacion" Mode="In" Type="Int32" />
+            <Parameter Name="Justificacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_ListarEmpleados" ReturnType="Collection(BDAsistenciaMVCModel.Usp_ListarEmpleados_Result)" />
+          <FunctionImport Name="Usp_DeleteTurnos">
+          <Parameter Name="IdTurno" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_InsertTurnos" ReturnType="Collection(Decimal)">
+            <Parameter Name="Turno" Mode="In" Type="String" />
+            <Parameter Name="Lunes_Sabado_Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="Lunes_Sabado_Fin" Mode="In" Type="DateTime" />
+            <Parameter Name="HorasAlmuerzo" Mode="In" Type="Double" />
+            <Parameter Name="Almuerzo_Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="Almuerzo_Fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_ListarTurnos" ReturnType="Collection(BDAsistenciaMVCModel.Usp_ListarTurnos_Result)" />
+          <FunctionImport Name="Usp_UpdateTurnos">
+            <Parameter Name="IdTurno" Mode="In" Type="Int32" />
+            <Parameter Name="Turno" Mode="In" Type="String" />
+            <Parameter Name="Lunes_Sabado_Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="Lunes_Sabado_Fin" Mode="In" Type="DateTime" />
+            <Parameter Name="HorasAlmuerzo" Mode="In" Type="Double" />
+            <Parameter Name="Almuerzo_Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="Almuerzo_Fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_ListarDias" ReturnType="Collection(BDAsistenciaMVCModel.Usp_ListarDias_Result)" />
+          <FunctionImport Name="Usp_ListarTipoJustificacion" ReturnType="Collection(BDAsistenciaMVCModel.Usp_ListarTipoJustificacion_Result)" />
+          <FunctionImport Name="Usp_DeleteJustificacionPersonal">
+            <Parameter Name="IdEmpleados" Mode="In" Type="Int32" />
+            <Parameter Name="IdJustificacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaI" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaF" Mode="In" Type="DateTime" />
+            <Parameter Name="IdDias" Mode="In" Type="Int32" />
+            <Parameter Name="Observaciones" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_InsertJustificacionPersonal">
+            <Parameter Name="IdEmpleados" Mode="In" Type="Int32" />
+            <Parameter Name="IdJustificacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaI" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaF" Mode="In" Type="DateTime" />
+            <Parameter Name="IdDias" Mode="In" Type="Int32" />
+            <Parameter Name="Observaciones" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_UpdateJustificacionPersonal">
+            <Parameter Name="IdEmpleados" Mode="In" Type="Int32" />
+            <Parameter Name="IdJustificacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaI" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaF" Mode="In" Type="DateTime" />
+            <Parameter Name="IdDias" Mode="In" Type="Int32" />
+            <Parameter Name="Observaciones" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_DeleteRegistroMarcas">
+            <Parameter Name="IdEmpleados" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="H_Ent1" Mode="In" Type="DateTime" />
+            <Parameter Name="H_Sal1" Mode="In" Type="DateTime" />
+            <Parameter Name="H_Ent2" Mode="In" Type="DateTime" />
+            <Parameter Name="H_Sal2" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_InsertRegistroMarcas">
+            <Parameter Name="IdEmpleados" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="H_Ent1" Mode="In" Type="DateTime" />
+            <Parameter Name="H_Sal1" Mode="In" Type="DateTime" />
+            <Parameter Name="H_Ent2" Mode="In" Type="DateTime" />
+            <Parameter Name="H_Sal2" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Usp_ListarJustificacionPersonal" ReturnType="Collection(BDAsistenciaMVCModel.Usp_ListarJustificacionPersonal_Result)" />
+          <FunctionImport Name="Usp_ListarRegistroMarcas" ReturnType="Collection(BDAsistenciaMVCModel.Usp_ListarRegistroMarcas_Result)" />
+          <EntitySet Name="AspNetRoles" EntityType="BDAsistenciaMVCModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="BDAsistenciaMVCModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="BDAsistenciaMVCModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="BDAsistenciaMVCModel.AspNetUsers" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="BDAsistenciaMVCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="BDAsistenciaMVCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="BDAsistenciaMVCModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="Usp_ListarDepartamento_Result">
+          <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
+          <Property Type="String" Name="Departamento" Nullable="false" MaxLength="75" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListarEmpleados_Result">
+          <Property Type="Int32" Name="IdEmpleados" Nullable="false" />
+          <Property Type="String" Name="Nombres" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <Property Type="Int32" Name="IdDepartamento" Nullable="false" />
+          <Property Type="Int32" Name="IdTurno" Nullable="false" />
+          <Property Type="Double" Name="Salario" Nullable="true" />
+          <Property Type="String" Name="DiaLibre" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListarTurnos_Result">
+          <Property Type="Int32" Name="IdTurno" Nullable="false" />
+          <Property Type="String" Name="Turno" Nullable="false" MaxLength="75" />
+          <Property Type="DateTime" Name="Lunes_Sabado_Inicio" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Lunes_Sabado_Fin" Nullable="false" Precision="23" />
+          <Property Type="Double" Name="HorasAlmuerzo" Nullable="false" />
+          <Property Type="DateTime" Name="Almuerzo_Inicio" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Almuerzo_Fin" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListarDias_Result">
+          <Property Type="Int32" Name="IdDias" Nullable="false" />
+          <Property Type="Double" Name="Dias" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListarTipoJustificacion_Result">
+          <Property Type="Int32" Name="IdJustificacion" Nullable="false" />
+          <Property Type="String" Name="Justificacion" Nullable="false" MaxLength="75" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListarJustificacionPersonal_Result">
+          <Property Type="Int32" Name="IdEmpleados" Nullable="false" />
+          <Property Type="Int32" Name="IdJustificacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaI" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaF" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="IdDias" Nullable="false" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListarRegistroMarcas_Result">
+          <Property Type="Int32" Name="IdEmpleados" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="H_Ent1" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="H_Sal1" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="H_Ent2" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="H_Sal2" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="BDAsistenciaMVCModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="BDAsistenciaMVCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="BDAsistenciaMVCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="BDAsistenciaMVCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="BDAsistenciaMVCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="BDAsistenciaMVCModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="BDAsistenciaMVCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BDAsistenciaMVCModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="BDAsistenciaMVCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BDAsistenciaMVCModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="BDAsistenciaMVCModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="BDAsistenciaMVCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDAsistenciaMVCModelStoreContainer" CdmEntityContainer="BDAsistenciaMVCEntities">
+          <EntitySetMapping Name="tblDepartamento">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblDepartamento">
+              <MappingFragment StoreEntitySet="tblDepartamento">
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblDepartamento">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertDepartamento">
+                  <ScalarProperty Name="Departamento" ParameterName="Departamento" />
+                  <ResultBinding Name="IdDepartamento" ColumnName="IdDepartamento" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateDepartamento">
+                  <ScalarProperty Name="Departamento" ParameterName="Departamento" Version="Current" />
+                  <ScalarProperty Name="IdDepartamento" ParameterName="IdDepartamento" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteDepartamento">
+                  <ScalarProperty Name="IdDepartamento" ParameterName="IdDepartamento" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDias">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblDias">
+              <MappingFragment StoreEntitySet="tblDias">
+                <ScalarProperty Name="IdDias" ColumnName="IdDias" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblDias">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertDias">
+                  <ScalarProperty Name="Dias" ParameterName="Dias" />
+                  <ResultBinding Name="IdDias" ColumnName="IdDias" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateDias">
+                  <ScalarProperty Name="Dias" ParameterName="Dias" Version="Current" />
+                  <ScalarProperty Name="IdDias" ParameterName="IdDias" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteDias">
+                  <ScalarProperty Name="IdDias" ParameterName="IdDias" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpleados">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblEmpleados">
+              <MappingFragment StoreEntitySet="tblEmpleados">
+                <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="DiaLibre" ColumnName="DiaLibre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblEmpleados">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertEmpleados">
+                  <ScalarProperty Name="DiaLibre" ParameterName="DiaLibre" />
+                  <ScalarProperty Name="Salario" ParameterName="Salario" />
+                  <ScalarProperty Name="IdTurno" ParameterName="IdTurno" />
+                  <ScalarProperty Name="IdDepartamento" ParameterName="IdDepartamento" />
+                  <ScalarProperty Name="Activo" ParameterName="Activo" />
+                  <ScalarProperty Name="Nombres" ParameterName="Nombres" />
+                  <ResultBinding Name="IdEmpleados" ColumnName="IdEmpleados" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateEmpleados">
+                  <ScalarProperty Name="DiaLibre" ParameterName="DiaLibre" Version="Current" />
+                  <ScalarProperty Name="Salario" ParameterName="Salario" Version="Current" />
+                  <ScalarProperty Name="IdTurno" ParameterName="IdTurno" Version="Current" />
+                  <ScalarProperty Name="IdDepartamento" ParameterName="IdDepartamento" Version="Current" />
+                  <ScalarProperty Name="Activo" ParameterName="Activo" Version="Current" />
+                  <ScalarProperty Name="Nombres" ParameterName="Nombres" Version="Current" />
+                  <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteEmpleados">
+                  <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTipoJustificacion">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblTipoJustificacion">
+              <MappingFragment StoreEntitySet="tblTipoJustificacion">
+                <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+                <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblTipoJustificacion">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertTipoJustificacion">
+                  <ScalarProperty Name="Justificacion" ParameterName="Justificacion" />
+                  <ResultBinding Name="IdJustificacion" ColumnName="IdJustificacion" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateTipoJustificacion">
+                  <ScalarProperty Name="Justificacion" ParameterName="Justificacion" Version="Current" />
+                  <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteTipoJustificacion">
+                  <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTurnos">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblTurnos">
+              <MappingFragment StoreEntitySet="tblTurnos">
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="Lunes_Sabado_Inicio" ColumnName="Lunes_Sabado_Inicio" />
+                <ScalarProperty Name="Lunes_Sabado_Fin" ColumnName="Lunes_Sabado_Fin" />
+                <ScalarProperty Name="HorasAlmuerzo" ColumnName="HorasAlmuerzo" />
+                <ScalarProperty Name="Almuerzo_Inicio" ColumnName="Almuerzo_Inicio" />
+                <ScalarProperty Name="Almuerzo_Fin" ColumnName="Almuerzo_Fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblTurnos">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertTurnos">
+                  <ScalarProperty Name="Almuerzo_Fin" ParameterName="Almuerzo_Fin" />
+                  <ScalarProperty Name="Almuerzo_Inicio" ParameterName="Almuerzo_Inicio" />
+                  <ScalarProperty Name="HorasAlmuerzo" ParameterName="HorasAlmuerzo" />
+                  <ScalarProperty Name="Lunes_Sabado_Fin" ParameterName="Lunes_Sabado_Fin" />
+                  <ScalarProperty Name="Lunes_Sabado_Inicio" ParameterName="Lunes_Sabado_Inicio" />
+                  <ScalarProperty Name="Turno" ParameterName="Turno" />
+                  <ResultBinding Name="IdTurno" ColumnName="IdTurno" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateTurnos">
+                  <ScalarProperty Name="Almuerzo_Fin" ParameterName="Almuerzo_Fin" Version="Current" />
+                  <ScalarProperty Name="Almuerzo_Inicio" ParameterName="Almuerzo_Inicio" Version="Current" />
+                  <ScalarProperty Name="HorasAlmuerzo" ParameterName="HorasAlmuerzo" Version="Current" />
+                  <ScalarProperty Name="Lunes_Sabado_Fin" ParameterName="Lunes_Sabado_Fin" Version="Current" />
+                  <ScalarProperty Name="Lunes_Sabado_Inicio" ParameterName="Lunes_Sabado_Inicio" Version="Current" />
+                  <ScalarProperty Name="Turno" ParameterName="Turno" Version="Current" />
+                  <ScalarProperty Name="IdTurno" ParameterName="IdTurno" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteTurnos">
+                  <ScalarProperty Name="IdTurno" ParameterName="IdTurno" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblJustificacionPersonal">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblJustificacionPersonal">
+              <MappingFragment StoreEntitySet="tblJustificacionPersonal">
+                <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+                <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+                <ScalarProperty Name="FechaI" ColumnName="FechaI" />
+                <ScalarProperty Name="FechaF" ColumnName="FechaF" />
+                <ScalarProperty Name="IdDias" ColumnName="IdDias" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblJustificacionPersonal">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertJustificacionPersonal">
+                  <ScalarProperty Name="Observaciones" ParameterName="Observaciones" />
+                  <ScalarProperty Name="IdDias" ParameterName="IdDias" />
+                  <ScalarProperty Name="FechaF" ParameterName="FechaF" />
+                  <ScalarProperty Name="FechaI" ParameterName="FechaI" />
+                  <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" />
+                  <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateJustificacionPersonal">
+                  <ScalarProperty Name="Observaciones" ParameterName="Observaciones" Version="Current" />
+                  <ScalarProperty Name="IdDias" ParameterName="IdDias" Version="Current" />
+                  <ScalarProperty Name="FechaF" ParameterName="FechaF" Version="Current" />
+                  <ScalarProperty Name="FechaI" ParameterName="FechaI" Version="Current" />
+                  <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" Version="Current" />
+                  <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteJustificacionPersonal">
+                  <ScalarProperty Name="Observaciones" ParameterName="Observaciones" />
+                  <ScalarProperty Name="IdDias" ParameterName="IdDias" />
+                  <ScalarProperty Name="FechaF" ParameterName="FechaF" />
+                  <ScalarProperty Name="FechaI" ParameterName="FechaI" />
+                  <ScalarProperty Name="IdJustificacion" ParameterName="IdJustificacion" />
+                  <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegistroMarcas">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblRegistroMarcas">
+              <MappingFragment StoreEntitySet="tblRegistroMarcas">
+                <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="H_Ent1" ColumnName="H_Ent1" />
+                <ScalarProperty Name="H_Sal1" ColumnName="H_Sal1" />
+                <ScalarProperty Name="H_Ent2" ColumnName="H_Ent2" />
+                <ScalarProperty Name="H_Sal2" ColumnName="H_Sal2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.tblRegistroMarcas">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertRegistroMarcas">
+                  <ScalarProperty Name="H_Sal2" ParameterName="H_Sal2" />
+                  <ScalarProperty Name="H_Ent2" ParameterName="H_Ent2" />
+                  <ScalarProperty Name="H_Sal1" ParameterName="H_Sal1" />
+                  <ScalarProperty Name="H_Ent1" ParameterName="H_Ent1" />
+                  <ScalarProperty Name="Fecha" ParameterName="Fecha" />
+                  <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteRegistroMarcas">
+                  <ScalarProperty Name="H_Sal2" ParameterName="H_Sal2" />
+                  <ScalarProperty Name="H_Ent2" ParameterName="H_Ent2" />
+                  <ScalarProperty Name="H_Sal1" ParameterName="H_Sal1" />
+                  <ScalarProperty Name="H_Ent1" ParameterName="H_Ent1" />
+                  <ScalarProperty Name="Fecha" ParameterName="Fecha" />
+                  <ScalarProperty Name="IdEmpleados" ParameterName="IdEmpleados" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListarDepartamento" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarDepartamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarDepartamento_Result">
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_DeleteDepartamento" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteDepartamento" />
+          <FunctionImportMapping FunctionImportName="Usp_InsertDepartamento" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertDepartamento" />
+          <FunctionImportMapping FunctionImportName="Usp_UpdateDepartamento" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateDepartamento" />
+          <FunctionImportMapping FunctionImportName="Usp_DeleteDias" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteDias" />
+          <FunctionImportMapping FunctionImportName="Usp_InsertDias" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertDias" />
+          <FunctionImportMapping FunctionImportName="Usp_UpdateDias" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateDias" />
+          <FunctionImportMapping FunctionImportName="Usp_DeleteEmpleados" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteEmpleados" />
+          <FunctionImportMapping FunctionImportName="Usp_InsertEmpleados" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertEmpleados" />
+          <FunctionImportMapping FunctionImportName="Usp_UpdateEmpleados" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateEmpleados" />
+          <FunctionImportMapping FunctionImportName="Usp_DeleteTipoJustificacion" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteTipoJustificacion" />
+          <FunctionImportMapping FunctionImportName="Usp_InsertTipoJustificacion" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertTipoJustificacion" />
+          <FunctionImportMapping FunctionImportName="Usp_UpdateTipoJustificacion" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateTipoJustificacion" />
+          <FunctionImportMapping FunctionImportName="Usp_ListarEmpleados" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarEmpleados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarEmpleados_Result">
+                <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="DiaLibre" ColumnName="DiaLibre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_DeleteTurnos" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteTurnos" />
+          <FunctionImportMapping FunctionImportName="Usp_InsertTurnos" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertTurnos" />
+          <FunctionImportMapping FunctionImportName="Usp_ListarTurnos" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarTurnos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarTurnos_Result">
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="Lunes_Sabado_Inicio" ColumnName="Lunes_Sabado_Inicio" />
+                <ScalarProperty Name="Lunes_Sabado_Fin" ColumnName="Lunes_Sabado_Fin" />
+                <ScalarProperty Name="HorasAlmuerzo" ColumnName="HorasAlmuerzo" />
+                <ScalarProperty Name="Almuerzo_Inicio" ColumnName="Almuerzo_Inicio" />
+                <ScalarProperty Name="Almuerzo_Fin" ColumnName="Almuerzo_Fin" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_UpdateTurnos" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateTurnos" />
+          <FunctionImportMapping FunctionImportName="Usp_ListarDias" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarDias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarDias_Result">
+                <ScalarProperty Name="IdDias" ColumnName="IdDias" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListarTipoJustificacion" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarTipoJustificacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarTipoJustificacion_Result">
+                <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+                <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_DeleteJustificacionPersonal" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteJustificacionPersonal" />
+          <FunctionImportMapping FunctionImportName="Usp_InsertJustificacionPersonal" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertJustificacionPersonal" />
+          <FunctionImportMapping FunctionImportName="Usp_UpdateJustificacionPersonal" FunctionName="BDAsistenciaMVCModel.Store.Usp_UpdateJustificacionPersonal" />
+          <FunctionImportMapping FunctionImportName="Usp_DeleteRegistroMarcas" FunctionName="BDAsistenciaMVCModel.Store.Usp_DeleteRegistroMarcas" />
+          <FunctionImportMapping FunctionImportName="Usp_InsertRegistroMarcas" FunctionName="BDAsistenciaMVCModel.Store.Usp_InsertRegistroMarcas" />
+          <FunctionImportMapping FunctionImportName="Usp_ListarJustificacionPersonal" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarJustificacionPersonal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarJustificacionPersonal_Result">
+                <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+                <ScalarProperty Name="IdJustificacion" ColumnName="IdJustificacion" />
+                <ScalarProperty Name="FechaI" ColumnName="FechaI" />
+                <ScalarProperty Name="FechaF" ColumnName="FechaF" />
+                <ScalarProperty Name="IdDias" ColumnName="IdDias" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListarRegistroMarcas" FunctionName="BDAsistenciaMVCModel.Store.Usp_ListarRegistroMarcas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDAsistenciaMVCModel.Usp_ListarRegistroMarcas_Result">
+                <ScalarProperty Name="IdEmpleados" ColumnName="IdEmpleados" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="H_Ent1" ColumnName="H_Ent1" />
+                <ScalarProperty Name="H_Sal1" ColumnName="H_Sal1" />
+                <ScalarProperty Name="H_Ent2" ColumnName="H_Ent2" />
+                <ScalarProperty Name="H_Sal2" ColumnName="H_Sal2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="BDAsistenciaMVCModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="BDAsistenciaMVCModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

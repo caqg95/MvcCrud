@@ -1,0 +1,113 @@
+﻿@model ConexionLinQMVC.Data.tblTipoJustificacion
+
+@{
+    ViewBag.Title = "EDITAR JUSTIFICACION";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Editar Justificacion</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+            <li class="dropdown">@Html.ActionLink("Tipo Justificacion", "Index", "TipoJustificacions") </li>
+            <li class="active">Registrar Justificacion</li>
+        </ol>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdJustificacion)
+        
+        <div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Confirmación de Eliminado</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Quiere borrar la Justificacion '@Model.Justificacion'. </p>
+                        <p>
+                            <strong> ¿Está Seguro de Continuar?</strong>
+                        </p>
+                        @using (Html.BeginForm())
+                {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.IdJustificacion)
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        @if (Model.IdJustificacion > 0)
+                {
+                            <a href="/TipoJustificacions/Delete/@Model.IdJustificacion" class="btn btn-danger">Si, Borrar la Justificacion.</a>
+                        }
+                        <button type="button" class="btn btn-primary" onclick="$('#ModalEliminar').modal('hide')">No, Borrar la Justificacion.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Justificacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Justificacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Justificacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="btn-group dropdown" style="margin-bottom:5px">
+                    <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                    <button class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#ModalEliminar">Eliminar</a>
+                        </li>
+                    </ul>
+                </div>
+                or @Html.ActionLink("Cancelar", "Index")
+            </div>
+        </div>
+ </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a la lista", "Index")
+</div>
+<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmación de Eliminado</h4>
+            </div>
+            <div class="modal-body">
+                <p>Quiere borrar la Justificacion '@Model.Justificacion'. </p>
+                <p>
+                    <strong> ¿Está Seguro de Continuar?</strong>
+                </p>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.IdJustificacion)
+                }
+            </div>
+            <div class="modal-footer">
+                @if (Model.IdJustificacion > 0)
+                {
+                    <a href="/TipoJustificacions/Delete/@Model.IdJustificacion" class="btn btn-danger">Si, Borrar la Justificacion.</a>
+                }
+                <button type="button" class="btn btn-primary" onclick="$('#ModalEliminar').modal('hide')">No, Borrar la Justificacion.</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

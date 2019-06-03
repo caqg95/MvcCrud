@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ConexionLinQMVC.Data.tblDepartamento>
+
+@{
+    ViewBag.Title = "DEPARTAMENTO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1><small>Listado de Departamento</small></h1>
+</div>
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Inicio","Index","Home")</li>
+    <li class="dropdown">
+    @*@Html.ActionLink("Catalogos", "Index", "Departamento")*@
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Catálogos
+            <b class="caret"></b>
+        </a>
+        <ul role="menu" class="dropdown-menu">
+            <li>@Html.ActionLink("Alta de Departamentos", "Index", "Departamento")</li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("Listado De Empleados", "Index", "Empleados")</li>
+        </ul>    </li>
+        <li class="active">Listado de Departamento</li>
+</ol>
+<p>
+    <a class="btn btn-default" href="@Url.Action("Create","Departamento")">Nuevo Departamento</a>
+</p>
+<div class="table-responsive" style="margin-top:60px">
+    <table id="grid" class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Departamento)
+                </th>*@
+                <th>Id</th>
+                <th>Departamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            { 
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.IdDepartamento.ToString(),"Edit", new { id = item.IdDepartamento })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Departamento)
+                    </td>
+                    @*<td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdDepartamento })
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+
+    </table>
+ </div>

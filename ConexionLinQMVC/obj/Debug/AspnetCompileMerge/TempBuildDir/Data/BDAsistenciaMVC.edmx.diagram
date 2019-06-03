@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae82361749b847579cb1db35e2f251f5" Name="Diagram1">
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.tblDepartamento" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.tblDias" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.tblEmpleados" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.tblTipoJustificacion" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.tblTurnos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.tblJustificacionPersonal" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.tblRegistroMarcas" Width="1.5" PointX="5.625" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.PK_EmpleadosDepartamentos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.FK_JustificacionPersonal_Dias" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.FK_JustificacionPersonal_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.FK_RegistroMarcas_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.PK_EmpleadosTurnos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.FK_JustificacionPersonal_TipoJustificacion" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.AspNetRoles" Width="1.5" PointX="7.375" PointY="2.5" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.AspNetUserClaims" Width="1.5" PointX="11.875" PointY="3.625" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.AspNetUserLogins" Width="1.5" PointX="11.875" PointY="1" />
+        <EntityTypeShape EntityType="BDAsistenciaMVCModel.AspNetUsers" Width="1.5" PointX="9.625" PointY="1.375" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="BDAsistenciaMVCModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

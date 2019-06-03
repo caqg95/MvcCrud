@@ -1,0 +1,27 @@
+﻿@model ConexionLinQMVC.Data.tblDepartamento
+
+@{
+    ViewBag.Title = "Detalle Departamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblDepartamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departamento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdDepartamento }) |
+    @Html.ActionLink("Retornar a la lista", "Index")
+</p>

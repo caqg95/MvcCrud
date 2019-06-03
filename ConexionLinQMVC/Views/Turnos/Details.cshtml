@@ -1,0 +1,67 @@
+﻿@model ConexionLinQMVC.Data.tblTurnos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblTurnos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Turno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Turno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lunes_Sabado_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lunes_Sabado_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lunes_Sabado_Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lunes_Sabado_Fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorasAlmuerzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorasAlmuerzo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Almuerzo_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almuerzo_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Almuerzo_Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almuerzo_Fin)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTurno }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
